@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+.venv
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+
+# IDE и редакторы
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Логи и отчеты
+*.log
+.coverage
+htmlcov/
