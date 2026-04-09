@@ -1,4 +1,5 @@
-# Содержит представления для обработки запросов api
+# Этот файл содержит API-представления (views) для приложения notes.
+# Представления принимают HTTP-запросы, обрабатывают их и возвращают ответы.
 from rest_framework import generics, status
 from rest_framework.response import Response
 from django.utils.decorators import method_decorator
@@ -8,20 +9,21 @@ from .serializers import NoteSerializer, CreateNoteSerializer, NoteUpdateSeriali
 
 
 class NoteListCreateView(generics.ListCreateAPIView):
-    # Представление для всего списка объектов класса Note
+    # Это готовое представление DRF, которое автоматически поддерживает
+    # GET для списка объектов и POST для создания нового объекта.
     queryset = Note.objects.all()
 
-
     def get_serializer_class(self):
-        # Возвращает подходящий сериализатор в зависимости от запроса
+        # В зависимости от метода запроса используем разный сериализатор.
+        # POST — при создании заметки. GET — для чтения списка.
         if self.request.method == 'POST':
             return CreateNoteSerializer
         return NoteSerializer
     
-
     def get(self, request, *args, **kwargs):
-        # Обработка get-запроса для получения списка заметок 
-        return super().get(request, *args, *kwargs)
+        # Здесь мы просто вызываем стандартную реализацию ListCreateAPIView.
+        # Это равноценно получению списка заметок и возврату JSON-ответа.
+        return super().get(request, *args, **kwargs)
     
 
 class NoteDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -31,12 +33,12 @@ class NoteDetailView(generics.RetrieveUpdateDestroyAPIView):
         if self.request.method in ['PUT', 'PATCH']:
             return NoteUpdateSerializer
         return NoteSerializer
-    
+
 
     def update(self, request, *args, **kwargs):
         # Обрабатывает обновление заметки с валидацией
 
-        partial = kwargs.pop('partical', False)
+        partial = kwargs.pop('partial', False)
 
         #instance - получаем то, что нам нужно обновить
         instance = self.get_object()
