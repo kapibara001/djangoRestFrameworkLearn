@@ -6,6 +6,7 @@ venv/
 env/
 .env
 .venv
+node_modules/
 
 # Django
 db.sqlite3
