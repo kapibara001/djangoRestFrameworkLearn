@@ -2,7 +2,6 @@
 from django.db import models
 from django.core.validators import MaxLengthValidator
 
-
 class Note(models.Model):
     # Создание полей модели
     # Verbose_name - указание названия поля на другом языке

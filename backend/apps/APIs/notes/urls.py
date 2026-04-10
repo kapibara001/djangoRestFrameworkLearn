@@ -8,7 +8,7 @@ app_name = 'notes'
 
 urlpatterns = [
     # /api/v1/notes  — список заметок и создание новой заметки.
-    path('notes', NoteListCreateView.as_view(), name='note-list-create'),
+    path('', NoteListCreateView.as_view(), name='note-list-create'),
     # /api/v1/notes/<pk> — просмотр, обновление или удаление конкретной заметки.
-    path('notes/<int:pk>', NoteDetailView.as_view(), name='note-detail'),
+    path('<int:pk>', NoteDetailView.as_view(), name='note-detail'),
 ]

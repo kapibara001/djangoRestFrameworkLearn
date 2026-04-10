@@ -35,7 +35,9 @@ THIRD_PARTY_APPS = [
 
 # Список локальных приложений
 LOCAL_APPS = [
-    'apps.notes',
+    # APIs
+    'apps.APIs.notes',
+    'apps.APIs.cars',
 ]
 
 # Общий список

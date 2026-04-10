@@ -5,5 +5,5 @@ from django.apps import AppConfig
 
 
 class NotesConfig(AppConfig):
-    name = 'apps.notes'
+    name = 'apps.APIs.notes'
     verbose_name = 'Приложение заметок'
